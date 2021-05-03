@@ -16,6 +16,9 @@ RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 FROM openjdk:11.0.10-jre-slim
 
+RUN addgroup --system bachhs && adduser --system --ingroup bachhs bachhs 
+USER bachhs
+
 ARG DEPENDENCY=/app/target/dependency
 
 COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
