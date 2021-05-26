@@ -22,7 +22,7 @@ jobs:
         java-version: '11'
 
     - name: Build with Maven
-      run: mvn clean install
+      run: mvn clean install -DskipTests
       env:
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PORT: ${{ secrets.DB_PORT }}
@@ -56,5 +56,5 @@ jobs:
       with:
         app-name: 'flashticket'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_93cfecd96636458d97026e2aadbad749 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
         package: '*.jar'
